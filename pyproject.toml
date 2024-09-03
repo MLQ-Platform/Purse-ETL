@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "purse-etl"
+version = "1.0.0"
+description = "Purse ETL Packege"
+authors = ["Jason <eppioes@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+pandas = "^2.2.2"
+requests = "^2.32.3"
+sqlalchemy = ">=1.4.36,<2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.1"
+mysql-connector-python = "^9.0.0"
+apache-airflow = "^2.10.0"
+pyarrow = "^17.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
