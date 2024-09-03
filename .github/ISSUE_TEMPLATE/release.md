@@ -1,5 +1,5 @@
 ---
-name: 🔖 Release Announcement
+name: Release Announcement Template
 about: Announce a new version release of the project
 title: 'Release: vX.Y.Z'
 labels: release, announcement

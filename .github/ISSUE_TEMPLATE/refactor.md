@@ -1,5 +1,5 @@
 ---
-name: Refactoring Task
+name: Refactoring Template
 about: Suggest a refactoring task to improve code quality or performance
 title: "[Refactor]: "
 labels: refactoring
