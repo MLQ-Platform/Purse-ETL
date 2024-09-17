@@ -65,8 +65,7 @@ class SQLDatabaseLoader(BaseLoader):
         Query Commit -> (Rollback) -> Session Close
 
         Args:
-            data: list or rows
-            table_name: table name
+            query: sqlalchemy text
         """
         connection = self.sql_engine.connect()
         transaction = connection.begin()
