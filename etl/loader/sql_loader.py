@@ -38,6 +38,9 @@ class SQLDatabaseLoader(BaseLoader):
     def connect(self):
         """
         Connecting SQL Engine
+
+        Return:
+            SQL Engine
         """
         try:
             self.sql_engine = create_engine(self.db_uri)
