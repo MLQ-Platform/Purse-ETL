@@ -1,3 +1,5 @@
+from typing import Type
+
 from etl.logger import setup_logger
 from etl.loader import BaseLoader
 from sqlalchemy import create_engine
@@ -9,6 +11,8 @@ logger = setup_logger(
     loggger_name="SQLDatabaseLoader",
     file_name="loader@sql_database_connector.log",
 )
+
+SQLAlchemyText = Type[str]
 
 
 class SQLDatabaseLoader(BaseLoader):
@@ -59,7 +63,7 @@ class SQLDatabaseLoader(BaseLoader):
             self.sql_engine.dispose()
             logger.info("SQL database connection closed")
 
-    def transaction(self, query):
+    def transaction(self, query: SQLAlchemyText):
         """
         General Transaction Function.
         Query Commit -> (Rollback) -> Session Close
