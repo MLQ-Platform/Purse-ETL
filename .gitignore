@@ -1,2 +1,4 @@
 __pycache__
 notebooks
+poetry.lock
+uvicorn.log
