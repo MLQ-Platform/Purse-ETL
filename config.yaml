@@ -7,6 +7,10 @@ database:
   password: m4camo38A!
   db_name: purse_ohlcv
 
+airflow:
+  username: purse
+  password: purse
+
 universe:
   tickers:
     - "ADAUSDT"
@@ -22,7 +26,6 @@ universe:
     - "FILUSDT"
     - "LINKUSDT"
     - "LTCUSDT"
-    - "MATICUSDT"
     - "MKRUSDT"
     - "NEARUSDT"
     - "SOLUSDT"
