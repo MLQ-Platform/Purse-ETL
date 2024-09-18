@@ -2,6 +2,37 @@
 
 Purse-ETL is a data extraction, transformation, and loading (ETL) tool designed for handling futures OHLCV data from Binance. This package provides functionalities for collecting data, transforming it into a standard OHLCV format, and loading it into a database for further analysis.
 
+## Package Structre
+```plaintext
+├── etl
+│   ├── __init__.py
+│   ├── extractor
+│   │   ├── __init__.py
+│   │   ├── abstract.py
+│   │   └── binance_collector
+│   │       ├── __init__.py
+│   │       ├── books.py
+│   │       ├── klines.py
+│   │       └── types.py
+│   ├── loader
+│   │   ├── __init__.py
+│   │   ├── abstract.py
+│   │   ├── query.py
+│   │   ├── redis_loader.py
+│   │   ├── sql_loader.py
+│   │   └── table.py
+│   ├── logger
+│   │   ├── __init__.py
+│   │   └── setup_logger.py
+│   ├── transformer
+│   │   ├── __init__.py
+│   │   └── binance_collector
+│   │       ├── __init__.py
+│   │       ├── book_transformer.py
+│   │       └── klines_transformer.py
+│   └── utils.py
+```
+
 ## Quick Start
 
 ### 1. Extract Futures OHLCV from Binance Data Collection
@@ -111,8 +142,3 @@ Execute the transaction to load the data into the database.
 loader.transaction(query)
 loader.close()
 ```
-
-## Additional Information
-
-- **TimeFrame Options**: The `TimeFrame` class provides different options for data frequency (e.g., minute, hourly, daily). Adjust this setting based on the data granularity you need.
-- **Error Handling**: Ensure that database configurations are correctly set in your environment for seamless data transactions.
