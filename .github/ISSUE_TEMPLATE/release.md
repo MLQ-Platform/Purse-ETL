@@ -6,48 +6,31 @@ labels: release, announcement
 assignees: ''
 
 ---
+### Release of Purse-ETL v1.0.0
 
-## 🎉 New Version Release: vX.Y.Z
+Release of the `Purse-ETL` package. This version (`v1.0.0`) provides a robust ETL tool designed to extract, transform, and load futures OHLCV data from Binance into a database for further analysis.
 
-We are excited to announce the release of **vX.Y.Z**! Below you will find details about the updates, improvements, and fixes included in this version.
+#### Release Details
+- **Version**: v1.0.0
+- **Release Date**: 2024-09-18
 
-### 📅 Release Date
-<!-- Specify the release date -->
+#### Features in v1.0.0
+1. **Binance Data Extraction**
+2. **OHLCV Data Transformation**
+3. **Database Loading**
 
-- Date: `YYYY-MM-DD`
+#### Documentation & Usage
+- Detailed documentation for quick start and usage examples is available in the repository's `README.md`.
+- Example scripts are provided to guide users through data extraction, transformation, and loading.
 
-### 🚀 Highlights
-<!-- Summarize the key features or improvements in this release -->
+#### Installation
+To install the package, use the following command:
 
-- **Feature 1**: Brief description of the new feature.
-- **Improvement 1**: Brief description of the improvement.
-- **Bug Fix 1**: Brief description of the bug fix.
+```bash
+poetry install purse-etl
+```
 
-### 📝 Release Notes
-<!-- Provide detailed release notes -->
-
-- **Feature 1**:
-  - Details and usage instructions
-- **Improvement 1**:
-  - Details about the improvement
-- **Bug Fix 1**:
-  - Explanation of the issue and the fix
-
-### 🔧 Update Instructions
-<!-- Provide any necessary instructions for updating to this version -->
-
-- Step 1: Do this
-- Step 2: Do that
-- Step 3: Enjoy the new version!
-
-### 💡 Additional Information
-<!-- Any additional information or notes -->
-
-- Link to full [Changelog](https://link_to_changelog)
-- Link to [Documentation](https://link_to_documentation)
-- Link to [Support](https://link_to_support)
-
+#### Getting Started
+- Please refer to the quick start guide in the `README.md` file to begin extracting and loading OHLCV data from Binance.
+and outlining of features for the upcoming `v1.1.0` release are underway.
 ---
-
-Thank you to everyone who contributed to this release! Your feedback and contributions are always appreciated.
-
