@@ -3,12 +3,12 @@ import pandas as pd
 
 class BinanceKilinesColumnMap:
     COLMAP = {
-        0: "datetime",
         1: "open",
         2: "high",
         3: "low",
         4: "close",
         5: "volume",
+        6: "close_time",
     }
 
 
@@ -28,7 +28,7 @@ class BinanceKlinesTransformer:
         """
         col_map = BinanceKilinesColumnMap.COLMAP
 
-        ohlcv = klines.iloc[:, : len(col_map)]
+        ohlcv = klines.iloc[:, min(col_map) : max(col_map) + 1]
         ohlcv = ohlcv.rename(col_map, axis=1)
         return ohlcv
 
@@ -38,9 +38,10 @@ class BinanceKlinesTransformer:
         """
         col_map = BinanceKilinesColumnMap.COLMAP
 
-        ohlcv = ohlcv.set_index(col_map[0])
+        ohlcv = ohlcv.set_index(col_map[6])
         ohlcv.index = pd.to_numeric(ohlcv.index)
         ohlcv.index = pd.to_datetime(ohlcv.index, unit="ms")
+        ohlcv.index = ohlcv.index.round("s")
         return ohlcv
 
     def _casting(self, ohlcv: pd.DataFrame) -> pd.DataFrame:
