@@ -1,7 +1,7 @@
 from etl.extractor.binance_collector import BaseBinanceCollection
 
 
-class BinanceFuturesKlinesUM(BaseBinanceCollection):
+class BinanceFuturesPremiumIndexUM(BaseBinanceCollection):
     """
     USD-M COLLECTOR
     """
@@ -9,13 +9,13 @@ class BinanceFuturesKlinesUM(BaseBinanceCollection):
     def __init__(self, ticker: str, timeframe: str) -> None:
         super().__init__(
             market_type="futures/um",
-            data_type="klines",
+            data_type="premiumIndexKlines",
             ticker=ticker,
             timeframe=timeframe,
         )
 
 
-class BinanceFuturesKlinesCM(BaseBinanceCollection):
+class BinanceFuturesPremiumIndexCM(BaseBinanceCollection):
     """
     COIN-M COLLECTOR
     """
@@ -23,21 +23,7 @@ class BinanceFuturesKlinesCM(BaseBinanceCollection):
     def __init__(self, ticker: str, timeframe: str) -> None:
         super().__init__(
             market_type="futures/cm",
-            data_type="klines",
-            ticker=ticker,
-            timeframe=timeframe,
-        )
-
-
-class BinanceSpotKlines(BaseBinanceCollection):
-    """
-    SPOT COLLECTOR
-    """
-
-    def __init__(self, ticker: str, timeframe: str) -> None:
-        super().__init__(
-            market_type="spot",
-            data_type="klines",
+            data_type="premiumIndexKlines",
             ticker=ticker,
             timeframe=timeframe,
         )

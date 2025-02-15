@@ -1,11 +1,15 @@
-from etl.extractor.binance_collector.klines import BaseBinanceKlinesCollection
-from etl.extractor.binance_collector.klines import BinanceFuturesCM
-from etl.extractor.binance_collector.klines import BinanceFuturesUM
-from etl.extractor.binance_collector.klines import BinanceSpot
+from etl.extractor.binance_collector.base import BaseBinanceCollection
+from etl.extractor.binance_collector.klines import BinanceFuturesKlinesCM
+from etl.extractor.binance_collector.klines import BinanceFuturesKlinesUM
+from etl.extractor.binance_collector.klines import BinanceSpotKlines
+from etl.extractor.binance_collector.premium_index import BinanceFuturesPremiumIndexCM
+from etl.extractor.binance_collector.premium_index import BinanceFuturesPremiumIndexUM
 
 __all__ = [
-    "BaseBinanceKlinesCollection",
-    "BinanceFuturesCM",
-    "BinanceFuturesUM",
-    "BinanceSpot",
+    "BaseBinanceCollection",
+    "BinanceFuturesKlinesCM",
+    "BinanceFuturesKlinesUM",
+    "BinanceSpotKlines",
+    "BinanceFuturesPremiumIndexCM",
+    "BinanceFuturesPremiumIndexUM",
 ]
