@@ -7,6 +7,7 @@ from typing import List
 from typing import Optional
 from etl.logger import setup_logger
 from etl.extractor import BaseExtractor
+from etl.extractor.binance_collector.types import TimeFrame
 
 
 class BaseBinanceCollection(BaseExtractor):
@@ -81,11 +82,7 @@ class BaseBinanceCollection(BaseExtractor):
             date (str)
         """
 
-        url = (
-            f"{self.BASE_URL}/{self.market_type}/daily/{self._data_type}/"
-            f"{self.ticker}/{self.timeframe}/"
-            f"{self.ticker}-{self.timeframe}-{date}.zip"
-        )
+        url = self._generate_url(date)
 
         try:
             response = requests.get(url, timeout=10)
@@ -97,7 +94,7 @@ class BaseBinanceCollection(BaseExtractor):
             self._logger.info(f"Files in ZIP for {date}: {file_list}")
 
             f = z.open(file_list[0])
-            data = pd.read_csv(f, header=None)
+            data = pd.read_csv(f, header=None, low_memory=False)
 
             if pd.to_numeric(data.iloc[0], errors="coerce").isna().any():
                 data.drop(0, inplace=True)
@@ -130,3 +127,29 @@ class BaseBinanceCollection(BaseExtractor):
 
         date_range = pd.date_range(start=start_date, end=end_date, freq="D")
         return date_range.strftime("%Y-%m-%d").tolist()
+
+    def _generate_url(self, date: str) -> str:
+        """
+        URL Rule
+        """
+
+        url_type_a = (
+            f"{self.BASE_URL}/{self.market_type}/daily/{self._data_type}/"
+            f"{self.ticker}/{self.timeframe}/"
+            f"{self.ticker}-{self.timeframe}-{date}.zip"
+        )
+
+        url_type_b = (
+            f"{self.BASE_URL}/{self.market_type}/daily/{self._data_type}/"
+            f"{self.ticker}/"
+            f"{self.ticker}-{self.timeframe}-{date}.zip"
+        )
+
+        if self.timeframe in [
+            TimeFrame.AGGTRADES,
+            TimeFrame.BOOKDEPTH,
+            TimeFrame.TRADES,
+        ]:
+            return url_type_b
+
+        return url_type_a

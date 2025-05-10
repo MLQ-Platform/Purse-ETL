@@ -4,3 +4,6 @@ class TimeFrame:
     MINUTE1 = "1m"
     MINUTE5 = "5m"
     DAY1 = "1d"
+    TRADES = "trades"
+    AGGTRADES = "aggTrades"
+    BOOKDEPTH = "bookDepth"

@@ -22,20 +22,25 @@ def setup_logger(
     logger = logging.getLogger(name=loggger_name)
     logger.setLevel(logging.INFO)
 
-    # File Handler
-    file_handler = logging.FileHandler(os.path.join(log_dir, file_name))
-    file_handler.setLevel(logging.INFO)
-    file_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    file_handler.setFormatter(file_formatter)
+    if not logger.handlers:
+        # File Handler
+        file_handler = logging.FileHandler(os.path.join(log_dir, file_name))
+        file_handler.setLevel(logging.INFO)
+        file_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+        file_handler.setFormatter(file_formatter)
 
-    # Consol Handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    console_formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    console_handler.setFormatter(console_formatter)
+        # Console Handler
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_formatter = logging.Formatter(
+            "%(asctime)s - %(levelname)s - %(message)s"
+        )
+        console_handler.setFormatter(console_formatter)
 
-    # Add Handlers
-    logger.addHandler(file_handler)
-    logger.addHandler(console_handler)
+        # Add Handlers
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
+
+    logger.propagate = False  # 상위 logger로 메시지 전달 방지
 
     return logger

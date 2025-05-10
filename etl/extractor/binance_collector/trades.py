@@ -1,29 +1,29 @@
 from etl.extractor.binance_collector import BaseBinanceCollection
 
 
-class BinanceFuturesPremiumIndexUM(BaseBinanceCollection):
+class BinanceFuturesTradesUM(BaseBinanceCollection):
     """
-    Premium Index USD-M COLLECTOR
+    Trades USD-M COLLECTOR
     """
 
     def __init__(self, ticker: str, timeframe: str) -> None:
         super().__init__(
             market_type="futures/um",
-            data_type="premiumIndexKlines",
+            data_type="trades",
             ticker=ticker,
             timeframe=timeframe,
         )
 
 
-class BinanceFuturesPremiumIndexCM(BaseBinanceCollection):
+class BinanceFuturesTradesCM(BaseBinanceCollection):
     """
-    Premium Index COIN-M COLLECTOR
+    Trades COIN-M COLLECTOR
     """
 
     def __init__(self, ticker: str, timeframe: str) -> None:
         super().__init__(
             market_type="futures/cm",
-            data_type="premiumIndexKlines",
+            data_type="trades",
             ticker=ticker,
             timeframe=timeframe,
         )

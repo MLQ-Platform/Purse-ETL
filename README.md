@@ -4,11 +4,6 @@ Purse-ETL is a data extraction, transformation, and loading (ETL) tool designed 
 
 
 ## Quick Start
-
-### 1. Extract Futures OHLCV from Binance Data Collection
-
-The first step is to extract the OHLCV data from Binance using the `BinanceFuturesUM` extractor.
-
 ```python
 from etl.extractor.binance_collector import BinanceFuturesUM
 from etl.extractor.binance_collector.types import TimeFrame
@@ -18,24 +13,11 @@ extractor_um = BinanceFuturesUM(ticker='BTCUSDT', timeframe=TimeFrame.MINUTE5)
 
 # Klines Data
 klines = extractor_um.load(start_date='2024-09-12', end_date='2024-09-12')
-```
 
-Example Output:
-```
-2024-09-18 02:26:19,108 - INFO - Files in ZIP for 2024-09-12: ['BTCUSDT-5m-2024-09-12.csv']
-2024-09-18 02:26:19,120 - INFO - Loaded data with shape: (288, 12)
-```
-
-### 2. Transform OHLCV Data
-
-Once the data is extracted, transform it into the standard OHLCV format using `BinanceKlinesTransformer`.
-
-```python
-from etl.transformer.binance_collector import BinanceKlinesTransformer
-
+# Transformer 
 transformer = BinanceKlinesTransformer()
+
 ohlcv = transformer.transform(klines)
-ohlcv
 ```
 
 Example Output:
