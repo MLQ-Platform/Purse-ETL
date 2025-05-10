@@ -1,4 +1,62 @@
-__pycache__
-notebooks
-poetry.lock
-uvicorn.log
+# Python 관련 파일
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상 환경
+venv/
+env/
+ENV/
+.env
+
+# IDE 관련 파일
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 로그 파일
+*.log
+logs/
+
+# 데이터베이스 파일
+*.db
+*.sqlite3
+
+# 환경 설정 파일
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 기타 파일
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+.hypothesis/
+.coverage.*
+
+*.yaml
+*.ipynb
+data/
