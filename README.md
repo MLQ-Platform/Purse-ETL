@@ -1,37 +1,7 @@
-# Purse-ETL v1.0.0
+# Purse-ETL
 
 Purse-ETL is a data extraction, transformation, and loading (ETL) tool designed for handling futures OHLCV data from Binance. This package provides functionalities for collecting data, transforming it into a standard OHLCV format, and loading it into a database for further analysis.
 
-## Package Structre
-```plaintext
-├── etl
-│   ├── __init__.py
-│   ├── extractor
-│   │   ├── __init__.py
-│   │   ├── abstract.py
-│   │   └── binance_collector
-│   │       ├── __init__.py
-│   │       ├── books.py
-│   │       ├── klines.py
-│   │       └── types.py
-│   ├── loader
-│   │   ├── __init__.py
-│   │   ├── abstract.py
-│   │   ├── query.py
-│   │   ├── redis_loader.py
-│   │   ├── sql_loader.py
-│   │   └── table.py
-│   ├── logger
-│   │   ├── __init__.py
-│   │   └── setup_logger.py
-│   ├── transformer
-│   │   ├── __init__.py
-│   │   └── binance_collector
-│   │       ├── __init__.py
-│   │       ├── book_transformer.py
-│   │       └── klines_transformer.py
-│   └── utils.py
-```
 
 ## Quick Start
 
@@ -78,67 +48,3 @@ datetime
 2024-09-12 23:55:00  58070.4  58104.1  58067.8  58097.0  184.711
 ```
 
-### 3. Load Data to MySQL Database
-
-With the transformed data ready, load it into a MySQL database.
-
-#### 3.1 Database Configuration
-
-Load the database configuration and create a connection.
-
-```python
-from etl.loader import SQLDatabaseLoader
-from etl.utils import load_db_config, get_db_uri 
-
-# Get DB Config
-db_config = load_db_config()
-
-# Get DB URI
-db_uri = get_db_uri(db_config)
-
-# Initialize Loader
-loader = SQLDatabaseLoader(db_uri=db_uri)
-loader.connect()
-```
-
-#### 3.2 Prepare the Data for Loading
-
-Create an `OHLCV` object to represent the data.
-
-```python
-from etl.loader.table import OHLCV
-from etl.loader.query import upsert_query_func
-
-ticker = 'BTCUSDt'
-
-# Create OHLCV Object
-table = OHLCV(
-    datetime=ohlcv.index.tolist(),
-    open=ohlcv.open.tolist(),
-    high=ohlcv.high.tolist(),
-    low=ohlcv.low.tolist(),
-    close=ohlcv.close.tolist(),
-    volume=ohlcv.volume.tolist(),
-)
-```
-
-#### 3.3 Generate Upsert Query
-
-Generate an upsert query to insert or update data in the database.
-
-```python
-# Generate Upsert Query
-query = upsert_query_func(
-    table, table_name=f"ohlcv_{ticker}".lower(), unique_key="datetime"
-)
-```
-
-#### 3.4 Execute the Data Transaction
-
-Execute the transaction to load the data into the database.
-
-```python
-# Data Transaction
-loader.transaction(query)
-loader.close()
-```
