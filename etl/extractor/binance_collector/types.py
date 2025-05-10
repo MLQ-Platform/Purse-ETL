@@ -7,3 +7,4 @@ class TimeFrame:
     TRADES = "trades"
     AGGTRADES = "aggTrades"
     BOOKDEPTH = "bookDepth"
+    BOOKTICKER = "bookTicker"

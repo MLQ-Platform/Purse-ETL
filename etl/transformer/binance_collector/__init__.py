@@ -13,11 +13,15 @@ from etl.transformer.binance_collector.book_depth_transformer import (
 from etl.transformer.binance_collector.trades_transformer import (
     BinanceTradesTransformer,
 )
+from etl.transformer.binance_collector.book_ticker_transformer import (
+    BinanceBookTickerTransformer,
+)
 
 __all__ = [
     "BinanceKlinesTransformer",
     "BinancePremiumIndexTransformer",
     "BinanceAggTradesTransformer",
     "BinanceBookDepthTransformer",
+    "BinanceBookTickerTransformer",
     "BinanceTradesTransformer",
 ]

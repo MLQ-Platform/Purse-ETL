@@ -8,8 +8,11 @@ from etl.extractor.binance_collector.agg_trades import BinanceFuturesAggTradesCM
 from etl.extractor.binance_collector.agg_trades import BinanceFuturesAggTradesUM
 from etl.extractor.binance_collector.book_depth import BinanceFuturesBookDepthCM
 from etl.extractor.binance_collector.book_depth import BinanceFuturesBookDepthUM
+from etl.extractor.binance_collector.book_ticker import BinanceFuturesBookTickerCM
+from etl.extractor.binance_collector.book_ticker import BinanceFuturesBookTickerUM
 from etl.extractor.binance_collector.trades import BinanceFuturesTradesCM
 from etl.extractor.binance_collector.trades import BinanceFuturesTradesUM
+
 
 __all__ = [
     "BaseBinanceCollection",
@@ -24,4 +27,6 @@ __all__ = [
     "BinanceFuturesBookDepthUM",
     "BinanceFuturesTradesCM",
     "BinanceFuturesTradesUM",
+    "BinanceFuturesBookTickerCM",
+    "BinanceFuturesBookTickerUM",
 ]
