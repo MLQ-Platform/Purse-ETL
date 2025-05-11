@@ -1,4 +1,7 @@
-class TimeFrame:
+from enum import Enum
+
+
+class TimeFrame(Enum):
     HOUR12 = "12h"
     HOUR1 = "1h"
     MINUTE1 = "1m"
