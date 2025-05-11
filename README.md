@@ -1,7 +1,6 @@
 # Purse-ETL
 
-Purse-ETL is a data extraction, transformation, and loading (ETL) tool designed for handling futures OHLCV data from Binance. This package provides functionalities for collecting data, transforming it into a standard OHLCV format, and loading it into a database for further analysis.
-
+Purse-ETL is a tool designed for handling futures data from Binance. 
 
 ## Quick Start
 ```python
