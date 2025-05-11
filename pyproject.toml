@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "purse-etl"
+name = "etl"
 version = "1.0.0"
 description = "Purse ETL Packege"
 authors = ["Jason <eppioes@gmail.com>"]
