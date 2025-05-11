@@ -6,9 +6,9 @@ authors = ["Jason <eppioes@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
-pandas = "^2.2.2"
-requests = "^2.32.3"
+python = "3.10.15"
+pandas = "2.2.2"
+requests = "2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.1"
