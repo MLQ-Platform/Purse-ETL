@@ -146,10 +146,10 @@ class BaseBinanceCollection(BaseExtractor):
         )
 
         if self.timeframe in [
-            TimeFrame.AGGTRADES,
-            TimeFrame.BOOKDEPTH,
-            TimeFrame.BOOKTICKER,
-            TimeFrame.TRADES,
+            TimeFrame.AGGTRADES.value,
+            TimeFrame.BOOKDEPTH.value,
+            TimeFrame.BOOKTICKER.value,
+            TimeFrame.TRADES.value,
         ]:
             return url_type_b
 
