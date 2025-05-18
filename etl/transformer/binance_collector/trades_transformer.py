@@ -17,7 +17,6 @@ class BinanceTradesColumnMap:
         COLMAP[2]: float,
         COLMAP[3]: float,
         COLMAP[4]: int,
-        COLMAP[5]: bool,
     }
 
 
@@ -28,6 +27,7 @@ class BinanceTradesTransformer:
         """
         trades = self._rename(trades)
         trades = self._casting(trades)
+        trades = self._casting_bool(trades)
         trades = self._unix2datetime(trades)
         return trades
 
@@ -54,4 +54,13 @@ class BinanceTradesTransformer:
         trades dataframe type casting
         """
         trades = trades.astype(BinanceTradesColumnMap.TYPEMAP)
+        return trades
+
+    def _casting_bool(self, trades: pd.DataFrame) -> pd.DataFrame:
+        """
+        trades dataframe bool type casting
+        """
+        trades[BinanceTradesColumnMap.COLMAP[5]] = trades[
+            BinanceTradesColumnMap.COLMAP[5]
+        ].map({"true": True, "false": False})
         return trades

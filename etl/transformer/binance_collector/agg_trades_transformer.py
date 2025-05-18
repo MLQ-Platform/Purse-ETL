@@ -19,7 +19,6 @@ class BinanceAggTradesColumnMap:
         COLMAP[3]: int,
         COLMAP[4]: int,
         COLMAP[5]: int,
-        COLMAP[6]: bool,
     }
 
 
@@ -30,6 +29,7 @@ class BinanceAggTradesTransformer:
         """
         agg_trades = self._rename(agg_trades)
         agg_trades = self._casting(agg_trades)
+        agg_trades = self._casting_bool(agg_trades)
         agg_trades = self._unix2datetime(agg_trades)
         return agg_trades
 
@@ -56,4 +56,13 @@ class BinanceAggTradesTransformer:
         agg_trades dataframe type casting
         """
         agg_trades = agg_trades.astype(BinanceAggTradesColumnMap.TYPEMAP)
+        return agg_trades
+
+    def _casting_bool(self, agg_trades: pd.DataFrame) -> pd.DataFrame:
+        """
+        agg_trades dataframe bool type casting
+        """
+        agg_trades[BinanceAggTradesColumnMap.COLMAP[6]] = agg_trades[
+            BinanceAggTradesColumnMap.COLMAP[6]
+        ].map({"true": True, "false": False})
         return agg_trades
